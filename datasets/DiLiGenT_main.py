@@ -16,7 +16,7 @@ np.random.seed(0)
 class DiLiGenT_main(data.Dataset):
     def __init__(self, args, split='train'):
         self.root = os.path.join(
-            '输入DiliGent数据集位置：到pmsData/')
+            './data/DiLiGenT/pmsData/')
         self.split = split
         self.args = args
         self.objs = ['ballPNG', 'bearPNG', 'buddhaPNG', 'catPNG', 'cowPNG', 'gobletPNG', 'harvestPNG', 'pot1PNG',

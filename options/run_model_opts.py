@@ -10,7 +10,7 @@ class RunModelOpts(BaseOpts):
         BaseOpts.initialize(self)
         #### Model and Dataset ####
         self.parser.add_argument('--run_model', default=True, action='store_false')
-        self.parser.add_argument('--benchmark', default='Sphere_Bunny_main')
+        self.parser.add_argument('--benchmark', default='DiLiGenT_main')
         # self.parser.add_argument('--bm_dir',
         #                          default='/home/txy/zhangzhao/PS_Dataset/Training and Evaluation Datasets/DiLiGenT/DiLiGenT/pmsData/')
         self.parser.add_argument('--model', default='MyMethod')

@@ -11,7 +11,7 @@ class BaseOpts(object):
         self.parser.add_argument('--time_sync', default=False, action='store_true')
         self.parser.add_argument('--workers', default=2, type=int)
         self.parser.add_argument('--seed', default=0, type=int)
-        self.parser.add_argument('--device', default='cuda:1')
+        self.parser.add_argument('--device', default='cuda:0')
 
         #### Model Arguments ####
         self.parser.add_argument('--fuse_type', default='max')

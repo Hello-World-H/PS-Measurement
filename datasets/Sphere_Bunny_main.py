@@ -19,7 +19,7 @@ np.random.seed(0)
 class SphereBunny_main(data.Dataset):
     def __init__(self, args, split='train'):
         self.Category = ['bunny_s-0.55_x-000_y-180', 'sphere_s-0.80_x-000_y-000'][1]  # 需要哪个用哪个
-        self.root = '输入Sphere&Bunny数据集位置'
+        self.root = './data/PS_Test_Sphere_Bunny/'
         self.split = split
         self.args = args
         self.objs = ['alum-bronze', 'alumina-oxide', 'aluminium', 'aventurnine', 'beige-fabric', 'black-fabric',
