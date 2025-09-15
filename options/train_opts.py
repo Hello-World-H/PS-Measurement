@@ -35,7 +35,7 @@ class TrainOpts(BaseOpts):
         self.parser.add_argument('--test_in_img_num', default=64, action='store_false')
 
         #### Training Arguments ####
-        self.parser.add_argument('--model', default='MyMethod')
+        self.parser.add_argument('--model', default='MyMFPSN')
 
         self.parser.add_argument('--solver', default='adam', help='adam|sgd')
         self.parser.add_argument('--milestones', default=[5, 10, 15, 20, 25], nargs='+', type=int)

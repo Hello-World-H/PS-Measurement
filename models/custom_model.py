@@ -13,6 +13,15 @@ def buildModel(args):
         from models.PS_FCN_run import PS_FCN
         model = PS_FCN(args.fuse_type, args.use_BN, in_c, other)
 
+    elif args.model == 'MF_PSN':
+        from models.MF_PSN import MF_PSN
+        model = MF_PSN(args.fuse_type, args.use_BN, in_c, other)
+    elif args.model == 'MF_PSN_run':
+        from models.MF_PSN_run import MF_PSN
+        model = MF_PSN(args.fuse_type, args.use_BN, in_c, other)
+    elif args.model == 'MyMFPSN':
+        from  models.MyMFPSN import MyMFPSN
+        model = MyMFPSN(args.fuse_type, args.use_BN, in_c, other)
 
     elif args.model == 'MyMethod':
         from models.MyMethod import MyMethod
