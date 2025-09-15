@@ -11,15 +11,15 @@ class TrainOpts(BaseOpts):
         #### Dataset Arguments ####
         self.parser.add_argument('--dataset', default='PS_Synth_Dataset')
         self.parser.add_argument('--data_dir',
-                                 default='输入Blobby数据集的位置')
+                                 default='./data/PS_Blobby_Dataset')
         self.parser.add_argument('--data_dir2',
-                                 default='输入Sculpture数据集的位置')
+                                 default='./data/PS_Sculpture_Dataset')
         self.parser.add_argument('--concat_data', default=True, action='store_true')  # 训练和测试都需要数据的拼接
 
         self.parser.add_argument('--train_rescale', default=False, action='store_false')
         self.parser.add_argument('--train_crop', default=True, action='store_false')
-        self.parser.add_argument('--train_crop_h', default=32, type=int)
-        self.parser.add_argument('--train_crop_w', default=32, type=int)
+        self.parser.add_argument('--train_crop_h', default=64, type=int)
+        self.parser.add_argument('--train_crop_w', default=64, type=int)
         self.parser.add_argument('--train_noise_aug', default=True, action='store_false')
         self.parser.add_argument('--train_noise', default=0.001, type=float)
         self.parser.add_argument('--train_color_aug', default=True, action='store_false')
