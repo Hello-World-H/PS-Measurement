@@ -2,6 +2,7 @@ from __future__ import division
 import os
 import numpy as np
 # from scipy.ndimage import imread
+import imageio
 from imageio import imread
 import scipy.io as sio
 import cv2 as cv
@@ -19,7 +20,7 @@ Resize_Width, Resize_Height = 512, 512  # 在论文中要体现，说明性能�
 
 class DiLiGenT_Pi_main(data.Dataset):
     def __init__(self, args, split='train'):
-        self.root = '输入DiLiGent_Pi数据集位置'
+        self.root = './data/DiLiGenT-Pi/DiLiGenT-Pi_release_png/'
         self.split = split
         self.args = args
         self.objs = ['Astro', 'Bagua-R', 'Bagua-T', 'Bear', 'Bird', 'Cloud-R', 'Cloud-T', 'Crab', 'Fish', 'Flower',
@@ -44,9 +45,10 @@ class DiLiGenT_Pi_main(data.Dataset):
         mask = imread(os.path.join(self.root, obj, 'mask.png'))
         if mask.ndim > 2: mask = mask[:, :, 0]
         mask = mask.reshape(mask.shape[0], mask.shape[1], 1)
+        mask = mask.astype(np.uint8)
         mask = cv.resize(mask, (Resize_Width, Resize_Height), interpolation=cv.INTER_LINEAR)
         mask = mask[:, :, np.newaxis]
-        return mask / 255.0
+        return mask
 
     def __len__(self):
         return len(self.objs)
