@@ -31,7 +31,7 @@ def test_DiliGent(args, split, loader, model, log, epoch, recorder):
             out_var = model(input)
             out_var = out_var[-1]
             timer.updateTime('Forward')
-            acc = eval_utils.calNormalAcc(data['tar'].data, out_var.data, data['m'].data)
+            acc, error_map = eval_utils.calNormalAcc(data['tar'].data, out_var.data, data['m'].data)
             MAE_List.append(acc['n_err_mean'])
             recorder.updateIter(split, acc.keys(), acc.values())
 
@@ -45,6 +45,7 @@ def test_DiliGent(args, split, loader, model, log, epoch, recorder):
                 pred = (out_var.data + 1) / 2
                 masked_pred = pred * data['m'].data.expand_as(out_var.data)
                 log.saveNormalResults(masked_pred, split, epoch, iters, others=data['obj'], dataset_name=args.benchmark)
+                log.saveErrorMap(error_map, split, epoch, iters, others=data['obj'], dataset_name=args.benchmark)
 
             del i, sample, data, input, out_var, acc, iters, pred, masked_pred
 

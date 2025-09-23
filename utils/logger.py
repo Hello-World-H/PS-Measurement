@@ -87,3 +87,8 @@ class Logger(object):
                 Pred_Norm_mat = ((results.cpu().numpy())[0]).transpose(1, 2, 0)
                 save_mat_name = others[0] + '.mat'
                 savemat(os.path.join(save_dir, save_mat_name), {'Normal_est': Pred_Norm_mat})
+
+    def saveErrorMap(self, error_map, split, epoch, iters, others=[], dataset_name='DiLiGenT_main'):
+        save_dir = os.path.join(self.args.log_dir, split)
+        save_name = 'errormap' + others[0] + '.png'
+        vutils.save_image(error_map, os.path.join(save_dir, save_name))

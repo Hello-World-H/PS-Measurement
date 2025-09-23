@@ -13,7 +13,7 @@ class RunModelOpts(BaseOpts):
         self.parser.add_argument('--benchmark', default='DiLiGenT_main')
         # self.parser.add_argument('--bm_dir',
         #                          default='/home/txy/zhangzhao/PS_Dataset/Training and Evaluation Datasets/DiLiGenT/DiLiGenT/pmsData/')
-        self.parser.add_argument('--model', default='MyMethod')
+        self.parser.add_argument('--model', default='MyMFPSN')
         self.parser.add_argument('--test_batch', default=1, type=int)
 
         #### Display Arguments ####

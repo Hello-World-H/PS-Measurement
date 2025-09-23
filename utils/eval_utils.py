@@ -1,5 +1,7 @@
 import torch
 import math
+import matplotlib as mpl
+import numpy as np
    
 def calNormalAcc(gt_n, pred_n, mask=None):
     """Tensor Dim: NxCxHxW"""
@@ -12,8 +14,15 @@ def calNormalAcc(gt_n, pred_n, mask=None):
     ang_valid   = angular_map[mask.narrow(1, 0, 1).squeeze(1).byte()]
     n_err_mean  = ang_valid.sum() / valid
     n_err_med = ang_valid.median()  # clean
+    angular_map = colorMap(angular_map.cpu().squeeze(1))
     n_acc_15 = (ang_valid < 15.0).sum().float() / valid.float()
     n_acc_30 = (ang_valid < 30.0).sum().float() / valid.float()
+    angular_error_map = {'angular_map': angular_map}  # clean
     value = {'n_err_mean': n_err_mean.item(), 'n_err_med': n_err_med.item(),
             'n_acc_15': n_acc_15.item(), 'n_acc_30': n_acc_30.item(),}
-    return value
+    return value, angular_map
+
+def colorMap(diff, thres=90): #clean
+    diff_norm = np.clip(diff, 0, thres) / thres
+    diff_cm = torch.from_numpy(mpl.cm.jet(diff_norm.numpy()))[:,:,:, :3]
+    return diff_cm.permute(0,3,1,2).clone().float()
