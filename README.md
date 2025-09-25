@@ -14,8 +14,12 @@
 - [x] 在DiLiGenT 102数据集上测试
   - [x] 修复_getmask
     - [x] 修复精度错误
-      - [ ] 如何查看.mat数据？python/matlab
-- [ ] 在Bunny&Sphere 数据集测试
+      - [x] 如何查看.mat数据？python/matlab
+- [x] 在Bunny&Sphere 数据集测试
+  - [ ] 其他论文对BS数据集的测试方法
 - [ ] 消融实验
 - [ ] 调参 $\lambda$
 - [ ] 加入注意力机制？
+
+## Testing
+`python eval/run_model.py --retrain data/Training/calib/train/checkp_best.pth.tar --in_img_num 96`
